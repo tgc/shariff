@@ -39,6 +39,11 @@ class ShariffPlugin extends GenericPlugin {
 
 				$request = $this->getRequest();
 				$context = $request->getContext();
+				if ($context == null) {
+				    # if $context is null then we were most likely
+				    # called from the site context so just return
+				    return true;
+				}
 				$contextId = $context->getId();
 
 				// display the buttons depending in the selected position
